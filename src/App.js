@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+function NameEntry({myName, setMyName}){
+
+  const handleChange=(event)=>{
+    console.log(event.target.value)
+    setMyName(event.target.value)
+  }
+
+  return (
+    <>
+      <h1>Fill in a name</h1>
+      <input placeholder="Enter your name" onChange={(event)=>handleChange(event)}/>
+      <br/>
+      {myName}
+    </>
+  )
+}
+
+
+function ShowName({myName}){
+  return (
+    <div>
+      <h1>Your name is: {myName}</h1>
+    </div>
+  )
+}
 
 function App() {
+  const [myName, setMyName]=useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Hello CAE 89
+      <hr/>
+      <NameEntry myName={myName} setMyName={setMyName}/>
+      <ShowName myName={myName}/>
     </div>
   );
 }
